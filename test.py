@@ -5,7 +5,7 @@ import radipy
 class TestModels(unittest.TestCase):
     def test_gEUD(self):
         model = radipy.models.gEUD([1, 2, 3], [4, 5, 6], 2)
-        self.assertEqual(model.val, 1024)
+        self.assertAlmostEqual(model.val, 5.385164807, places=3)
 
     def test_LKB(self):
         gEUD = radipy.models.gEUD([1, 2, 3], [4, 5, 6], 2)

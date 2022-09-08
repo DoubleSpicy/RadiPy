@@ -25,7 +25,8 @@ class gEUD(__model__):
         self.val = self.compute()
 
     def compute(self):
-        res = np.power(np.sum(np.multiply(self.v, self.D)), self.a)
+        vol_proportion = self.v / np.sum(self.v)
+        res = np.sum(np.multiply(vol_proportion, np.power(self.D, self.a)))**(1/self.a)
         return res
 
 
@@ -44,7 +45,7 @@ class RS(__model__):
     # main reference: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4216137/
     def __init__(self, dose: np.ndarray, volume: np.ndarray, D50: float, gamma: float, seriality: float):
         super().__init__(locals())
-        self.PDi_func = np.vectorize(lambda d: 2**(-np.exp(np.exp(self.gamma) * (1 - d / self.D50))))
+        self.PDi_func = np.vectorize(lambda d: 2**(-np.exp(np.exp(1) * self.gamma * (1 - d / self.D50))))
         self.val = self.compute()
 
     def compute(self):
