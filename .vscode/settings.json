@@ -1,0 +1,14 @@
+{
+    "files.associations": {
+        "cmath": "cpp",
+        "complex": "cpp",
+        "iostream": "cpp",
+        "ostream": "cpp"
+    },
+    // for python vscode intellisense
+    "python.analysis.autoSearchPaths": true,  //Automatically add common search paths like 'src'.
+    "python.analysis.extraPaths": [
+         //Additional import search resolution paths
+        "folderA",
+    ]   
+}
