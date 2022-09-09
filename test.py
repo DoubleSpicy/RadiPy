@@ -8,10 +8,10 @@ class TestModels(unittest.TestCase):
         self.assertAlmostEqual(model.val, 5.385164807, places=3)
 
     def test_LKB(self):
-        gEUD = radipy.models.gEUD([1, 2, 3], [4, 5, 6], 2)
-        gEUD.val = 1 # mockup val
-        model = radipy.models.LKB(1, 1, gEUD)
-        self.assertAlmostEqual(model.val[0], 1.2533141373154997)
+        model = radipy.models.LKB(1, 1, [1, 2, 3], [4, 5, 6], 2)
+        model.gEUD_model.val = 1
+        model.compute()
+        self.assertAlmostEqual(model.val[0], 1.25331413, places=3)
 
     def test_RS(self):
         model = radipy.models.RS([1,2], [1,2], 1, 1, 1)
